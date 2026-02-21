@@ -14,7 +14,7 @@ header-includes:
 **Author:** Nicolas Cloutier  
 **ORCID:** 0009-0008-5289-5324  
 **Affiliation:** GrillCheese AI (formerly: Hydra Research & Labs)  
-**Code:** https://github.com/<your-org>/qzkp  
+**Code:** https://github.com/Grillcheese-AI/qzkp-academic
 **Date:** May 24th, 2025 (Revised: Feb 21st, 2026)
 
 ## Abstract
