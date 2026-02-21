@@ -450,14 +450,14 @@ Response to technical inquiry
 ### 1. Measurement Compatibility (Commutation) Conditions
 
 **Definition 1.1 (Secret Observable).**  
-On $\mathcal{H}_d$:
+On the data Hilbert space $\mathcal{H}_d$:
 $$
 \mathcal{O}_s=\sum_{i=0}^{2^n-1}\alpha_i\,|\psi_i\rangle\langle\psi_i|,
 \quad |\psi_i\rangle\in\mathcal{H}_d,\ \alpha_i\in\mathbb{R}.
 $$
 
 **Definition 1.2 (Validity Observable).**  
-On $\mathcal{H}_v$:
+On the verification Hilbert space $\mathcal{H}_v$:
 $$
 \mathcal{O}_v=\sum_{j=0}^{2^m-1}\beta_j\,|\phi_j\rangle\langle\phi_j|,
 \quad |\phi_j\rangle\in\mathcal{H}_v,\ \beta_j\in\{0,1\}.
@@ -475,11 +475,11 @@ $$
 
 Noise can be modeled as a CPTP map:
 $$
-\mathcal{N}(\rho)=\sum_k E_k\,\rho\,E_k^\dagger,
-\quad \sum_k E_k^\dagger E_k=\mathbb{I}.
+\mathcal{N}(\rho)=\sum_{k} E_k\,\rho\,E_k^\dagger,
+\quad \sum_{k} E_k^\dagger E_k=\mathbb{I}.
 $$
 
-**Important clarification.** Local CPTP maps preserve locality structure, but do **not** in general preserve commutators under arbitrary pictures without additional assumptions. Claims of “orthogonality preserved under noise” must specify the exact picture (Schrödinger vs. Heisenberg) and required channel properties, or be expressed as bounded disturbance statements.
+**Important clarification.** Local CPTP maps preserve tensor-factor locality, but do not, in general, preserve commutators under arbitrary pictures without additional assumptions. Claims such as “orthogonality preserved under noise” must specify the exact picture (Schrödinger vs. Heisenberg) and required channel properties, or be expressed as bounded disturbance statements.
 
 ### 3. Zero-Knowledge Security Bounds (Assumptions Required)
 
@@ -492,13 +492,13 @@ Bounds of the form:
 $$
 I(\text{Secret}:\text{Transcript})_\rho \le \varepsilon \cdot \log_2|\mathcal{S}|
 $$
-require explicit definition of the transcript state, adversary model, and a proof (often via trace-distance/simulation arguments). In this work, we treat leakage bounds primarily as **engineering goals supported by empirical leakage regression tests**, unless/until a full proof is provided.
+require an explicit definition of the transcript state, an adversary model, and a proof (often via trace-distance and/or simulation arguments). In this work, we treat leakage bounds primarily as engineering goals supported by empirical leakage regression tests unless/until a full proof is provided.
 
 ### 4. Practical Implementation Bounds
 
-- Soundness via repetition: $\varepsilon_{\text{sound}}\le 2^{-k}$  
+- Soundness via repetition: $\varepsilon_{\text{sound}} \le 2^{-k}$  
 - Verification cost scales approximately $O(k)$ (not $O(1)$)  
-- Scalability summary matches Table §4.4  
+- Scalability summary matches Table 4.4  
 
 ### 5. Conclusion (Technical Appendix)
 
