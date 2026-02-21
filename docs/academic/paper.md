@@ -481,7 +481,7 @@ $$
 \quad \sum_{k} E_k^\dagger E_k=\mathbb{I}.
 $$
 
-**Important clarification.** Local CPTP maps preserve tensor-factor locality, but do not, in general, preserve commutators under arbitrary pictures without additional assumptions. Claims such as “orthogonality preserved under noise” must specify the exact picture (Schrödinger vs. Heisenberg) and required channel properties, or be expressed as bounded disturbance statements.
+**Important clarification.** Local CPTP maps preserve tensor-factor locality, but do not, in general, preserve commutators under arbitrary pictures without additional assumptions.
 
 ### 3. Zero-Knowledge Security Bounds (Assumptions Required)
 
@@ -494,7 +494,7 @@ Bounds of the form:
 $$
 I(\text{Secret}:\text{Transcript})_\rho \le \varepsilon \cdot \log_2|\mathcal{S}|
 $$
-require an explicit definition of the transcript state, an adversary model, and a proof (often via trace-distance and/or simulation arguments). In this work, we treat leakage bounds primarily as engineering goals supported by empirical leakage regression tests unless/until a full proof is provided.
+require an explicit definition of the transcript state, an adversary model, and a proof (often via trace-distance and/or simulation arguments).
 
 ### 4. Practical Implementation Bounds
 
