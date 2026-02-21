@@ -81,20 +81,20 @@ Hash-based commitments use SHA-256 and/or BLAKE3; security depends on digest len
 
 ### 3.1 Security Model
 
-We consider a malicious verifier $V^*$ that can adaptively choose challenges and record full transcripts. Unless otherwise stated, the adversary is quantum polynomial-time (QPT).
+We consider a malicious verifier $V^{\ast}$ that can adaptively choose challenges and record full transcripts. Unless otherwise stated, the adversary is quantum polynomial-time (QPT).
 
 #### 3.1.1 Zero-Knowledge Property
 
 **Theorem 1 (Computational Zero-Knowledge).**  
-For any quantum polynomial-time verifier $V^*$, there exists a quantum polynomial-time simulator $S$ such that for all valid instances $x$:
+For any quantum polynomial-time verifier $V^{\ast}$, there exists a quantum polynomial-time simulator $S$ such that for all valid instances $x$:
 
 $$
-\mathrm{View}_{V^*}(P, V^*)(x) \approx_c S(x),
+\mathrm{View}_{V^{\ast}}(P, V^{\ast})(x) \approx_c S(x).
 $$
 
 where $\approx_c$ denotes computational indistinguishability.
 
-*Note.* This paper does **not** claim information-theoretic zero-knowledge unless explicitly proven under a stronger framework.
+*Note.* This paper does not claim information-theoretic zero-knowledge unless explicitly proven under a stronger framework.
 
 #### 3.1.2 Soundness
 
