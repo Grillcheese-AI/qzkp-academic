@@ -183,7 +183,7 @@ def create_qzkp_circuit(data_bytes, security_level=256):
     qc = QuantumCircuit(security_level // 8)  # e.g., 32 qubits for 256-bit
     qc = apply_probabilistic_entanglement(qc, quantum_state)
     return qc
-````
+```
 
 ### 4.4 Proof Size and Soundness Mapping
 
@@ -322,15 +322,15 @@ This work presents a reproducible QZKP prototype and an engineering-focused secu
 
 ## References
 
-[1] John Watrous. (2009). *Zero-Knowledge against Quantum Attacks*. **SIAM Journal on Computing**, 39(1), 25–58. :contentReference[oaicite:5]{index=5}
+[1] John Watrous. (2009). *Zero-Knowledge against Quantum Attacks*. **SIAM Journal on Computing**, 39(1), 25–58.   
 
-[2] Anne Broadbent, Christian Schaffner. (2016). *Quantum Cryptography Beyond Quantum Key Distribution*. **Designs, Codes and Cryptography**, 78(1), 351–382. :contentReference[oaicite:6]{index=6}
+[2] Anne Broadbent, Christian Schaffner. (2016). *Quantum Cryptography Beyond Quantum Key Distribution*. **Designs, Codes and Cryptography**, 78(1), 351–382.  
 
-[3] Hirotada Kobayashi. (2003). *Non-interactive Quantum Perfect and Statistical Zero-Knowledge*. In **ISAAC 2003**, LNCS 2906, pp. 178–188. Springer. :contentReference[oaicite:7]{index=7}
+[3] Hirotada Kobayashi. (2003). *Non-interactive Quantum Perfect and Statistical Zero-Knowledge*. In **ISAAC 2003**, LNCS 2906, pp. 178–188. Springer.  
 
-[4] Jack O’Connor, Jean-Philippe Aumasson, Samuel Neves, Zooko Wilcox-O’Hearn. (2020). *BLAKE3: One Function, Fast Everywhere*. IACR ePrint 2020/1143. :contentReference[oaicite:8]{index=8}
+[4] Jack O’Connor, Jean-Philippe Aumasson, Samuel Neves, Zooko Wilcox-O’Hearn. (2020). *BLAKE3: One Function, Fast Everywhere*. IACR ePrint 2020/1143.  
 
-[5] Ralph C. Merkle. (1987). *A Digital Signature Based on a Conventional Encryption Function*. In **Advances in Cryptology — CRYPTO ’87**.
+[5] Ralph C. Merkle. (1988). *A Digital Signature Based on a Conventional Encryption Function*. In **CRYPTO ’87**, LNCS 293, pp. 369–378. Springer.
 
 ---
 *Corresponding Author: Nicolas Cloutier (ORCID: 0009-0008-5289-5324)*
