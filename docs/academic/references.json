@@ -1,0 +1,87 @@
+[
+  {
+    "id": "Watrous2009ZKQuantum",
+    "type": "article-journal",
+    "author": [
+      { "family": "Watrous", "given": "John" }
+    ],
+    "issued": { "date-parts": [[2009]] },
+    "title": "Zero-Knowledge against Quantum Attacks",
+    "container-title": "SIAM Journal on Computing",
+    "volume": "39",
+    "issue": "1",
+    "page": "25-58",
+    "DOI": "10.1137/060670997"
+  },
+  {
+    "id": "BroadbentSchaffner2016BeyondQKD",
+    "type": "article-journal",
+    "author": [
+      { "family": "Broadbent", "given": "Anne" },
+      { "family": "Schaffner", "given": "Christian" }
+    ],
+    "issued": { "date-parts": [[2016]] },
+    "title": "Quantum Cryptography Beyond Quantum Key Distribution",
+    "container-title": "Designs, Codes and Cryptography",
+    "volume": "78",
+    "issue": "1",
+    "page": "351-382",
+    "DOI": "10.1007/s10623-015-0157-4",
+    "archive": "arXiv",
+    "archive_location": "1510.06120",
+    "genre": "quant-ph"
+  },
+  {
+    "id": "Kobayashi2003NIQZK",
+    "type": "paper-conference",
+    "author": [
+      { "family": "Kobayashi", "given": "Hirotada" }
+    ],
+    "editor": [
+      { "family": "Ibaraki", "given": "Toshihide" },
+      { "family": "Katoh", "given": "Naoki" },
+      { "family": "Ono", "given": "Hirotaka" }
+    ],
+    "issued": { "date-parts": [[2003]] },
+    "title": "Non-interactive Quantum Perfect and Statistical Zero-Knowledge",
+    "container-title": "Algorithms and Computation: 14th International Symposium, ISAAC 2003, Kyoto, Japan, December 15–17, 2003, Proceedings",
+    "collection-title": "Lecture Notes in Computer Science",
+    "volume": "2906",
+    "page": "178-188",
+    "publisher": "Springer",
+    "DOI": "10.1007/978-3-540-24587-2_20"
+  },
+  {
+    "id": "OConnorAumassonNevesWilcoxOHearn2020BLAKE3",
+    "type": "report",
+    "author": [
+      { "family": "O'Connor", "given": "Jack" },
+      { "family": "Aumasson", "given": "Jean-Philippe" },
+      { "family": "Neves", "given": "Samuel" },
+      { "family": "Wilcox-O'Hearn", "given": "Zooko" }
+    ],
+    "issued": { "date-parts": [[2020]] },
+    "title": "BLAKE3: One Function, Fast Everywhere",
+    "container-title": "IACR Cryptology ePrint Archive",
+    "number": "2020/1143",
+    "URL": "https://eprint.iacr.org/2020/1143"
+  },
+  {
+    "id": "Merkle1988DigitalSignature",
+    "type": "paper-conference",
+    "author": [
+      { "family": "Merkle", "given": "Ralph C." }
+    ],
+    "editor": [
+      { "family": "Pomerance", "given": "Carl" }
+    ],
+    "issued": { "date-parts": [[1988]] },
+    "title": "A Digital Signature Based on a Conventional Encryption Function",
+    "container-title": "Advances in Cryptology — CRYPTO ’87: A Conference on the Theory and Applications of Cryptographic Techniques, Santa Barbara, California, USA, August 16–20, 1987, Proceedings",
+    "collection-title": "Lecture Notes in Computer Science",
+    "volume": "293",
+    "page": "369-378",
+    "publisher": "Springer",
+    "DOI": "10.1007/3-540-48184-2_32"
+  }
+]
