@@ -102,7 +102,7 @@ where $\approx_c$ denotes computational indistinguishability.
 For $k$ independent binary challenges:
 
 $$
-\Pr[\langle P^*,V\rangle(x)=1 \mid x \notin L] \le 2^{-k}.
+\Pr[\langle P^{\ast},V\rangle(x)=1 \mid x \notin L] \le 2^{-k}.
 $$
 
 This provides a direct mapping between “security level” and challenge count.
@@ -116,9 +116,9 @@ Our framework targets practical security challenges:
 3. **Randomness**: cryptographically secure randomization using OS entropy (`crypto/rand`)  
 4. **Adversary Model**: resistance to transcript-based reconstruction strategies tested in the suite  
 
-We developed a testing framework to quantify transcript leakage as an engineering goal (see Section 5 and Appendix B).
+We developed a testing framework to quantify transcript leakage as an engineering goal (see §5 and Appendix B).
 
----
+\needspace{4\baselineskip}
 
 ## 4. Probabilistic Entanglement Framework
 
@@ -177,16 +177,142 @@ def create_qzkp_circuit(data_bytes, security_level=256):
     Prototype circuit builder: prepares an encoded state + verification structure.
     Note: quantum hardware returns measurement results; statevectors exist only in simulator mode.
     """
-    # Step 1: Probabilistic encoding
     quantum_state = bytes_to_quantum_amplitudes(data_bytes)
-
-    # Step 2: Create entangled proof state (illustrative)
     qc = QuantumCircuit(security_level // 8)  # e.g., 32 qubits for 256-bit
-
-    # Step 3: Apply entanglement / verification operations (illustrative)
     qc = apply_probabilistic_entanglement(qc, quantum_state)
-
     return qc
+````
+
+### 4.4 Proof Size and Soundness Mapping
+
+For $k$ independent binary challenges, soundness error is bounded by $2^{-k}$. The implementation exposes security levels via $k \in {32,64,80,96,128,256}$.
+
+| Security Level | Challenges ($k$) | Proof Size |                         Soundness Error |
+| -------------: | ---------------: | ---------: | --------------------------------------: |
+|         32-bit |               32 |    13.5 KB |  $2^{-32} \approx 2.33 \times 10^{-10}$ |
+|         64-bit |               64 |    17.6 KB |  $2^{-64} \approx 5.42 \times 10^{-20}$ |
+|         80-bit |               80 |    19.6 KB |  $2^{-80} \approx 8.27 \times 10^{-25}$ |
+|         96-bit |               96 |    21.6 KB |  $2^{-96} \approx 1.26 \times 10^{-29}$ |
+|        128-bit |              128 |    25.7 KB | $2^{-128} \approx 2.94 \times 10^{-39}$ |
+|        256-bit |              256 |    41.9 KB | $2^{-256} \approx 8.64 \times 10^{-78}$ |
+
+\newpage
+
+## 5. Security Analysis of Existing Implementations (Empirical)
+
+**Methodology (Empirical Leakage Evaluation)**:
+
+1. Generate distinctive witness/test vectors
+2. Generate transcripts using the target implementation
+3. Scan transcripts for direct witness inclusion or trivially reconstructible patterns
+4. Attempt heuristic reconstruction where applicable
+5. Report leakage as an engineering metric (not a formal proof)
+
+**Results (Summary)**:
+
+* **Insecure implementation**: observed high leakage under naive transcript designs
+* **Secure-by-design prototype**: passes “no-direct-inclusion” regression tests under the implemented suite
+
+> Important: These tests provide evidence and regression protection; they do not replace a full cryptographic proof.
+
+### 5.1 Attack Scenarios
+
+#### 5.1.1 State Reconstruction Attack (Transcript-Level)
+
+**Objective**: reconstruct witness structure from proof data
+**Method**: extract serialized witness components or match amplitude patterns
+**Observed**: succeeds against naive implementations that serialize amplitudes or probabilities
+
+#### 5.1.2 Commitment Inversion / Weak Randomness
+
+**Objective**: exploit deterministic or weakly randomized commitments
+**Method**: pattern analysis and brute-force in reduced spaces
+**Observed**: succeeds against weak commitment schemes; mitigated by strong randomness + proper digest sizing
+
+\newpage
+
+## 6. Secure Implementation Design
+
+### 6.1 SecureQuantumZKP Protocol
+
+We designed `SecureQuantumZKP` to address implementation leakage risks with these **engineering goals**:
+
+* **Cryptographic Commitments**: SHA-256/BLAKE3 with secure randomization
+* **Post-Quantum Authentication**: ML-DSA (Dilithium-derived) for authentication/integrity
+* **Merkle Tree Aggregation**: efficient proof composition
+* **Transcript Non-Inclusion Goal**: avoid direct embedding of witness amplitudes/components in transcripts
+
+**Protocol Structure** (illustrative):
+
+```
+SecureProof {
+  ProofID: UUID,
+  Commitments: []CryptographicCommitment,
+  Challenges: []Challenge,
+  Responses: []Response,
+  MerkleRoot: MerkleTree(responses),
+  Signature: PQSignature,
+  Metadata: SecureMetadata
+}
+```
+
+### 6.2 Cryptographic Components
+
+**Hash Functions**
+
+* SHA-256: standard hash for commitments
+* BLAKE3: high-performance hash alternative
+* Digest length: MUST be chosen to meet security goals; truncation reduces security margin
+
+**Digital Signatures**
+
+* ML-DSA (Dilithium-derived): post-quantum authentication primitive
+
+**Randomness**
+
+* OS CSPRNG (`crypto/rand`) for commitment randomness and protocol nonces
+
+### 6.3 Security Properties (Scope)
+
+* **Completeness (engineering)**: valid proofs should verify with high probability under expected conditions
+* **Soundness**: bounded by $2^{-k}$ under independent challenge repetition
+* **Zero-Knowledge (claim)**: simulator-based computational ZK under explicit assumptions; empirical leakage tests support non-inclusion goals
+
+\newpage
+
+## 7. Performance Analysis
+
+### 7.1 Proof Size Analysis
+
+Proof sizes scale approximately linearly with the number of challenges $k$ (Table in §4.4).
+
+### 7.2 Performance Benchmarking (Prototype)
+
+**Generation Performance** (example reported):
+
+* 80-bit security: 0.57 ms average generation time
+* 128-bit security: 0.72 ms average generation time
+* 256-bit security: 1.72 ms average generation time
+
+**Verification Performance** (example reported):
+
+* < 0.2 ms verification time per challenge (implementation-dependent)
+* Overall verification scales approximately $O(k)$ (not $O(1)$)
+
+> Note: Microbenchmarks measure CPU code paths and should be reported with platform/toolchain details for reproducibility.
+
+### 7.3 Comparison with Other ZK Systems (Cautious)
+
+Any cross-system comparison must specify:
+
+* statement size and witness model
+* setup assumptions
+* hardware and implementation details
+* security model and threat assumptions
+
+We include comparisons as contextual motivation; definitive claims require standardized benchmarking protocols.
+
+\needspace{4\baselineskip}
 
 ## 8. Conclusion
 
