@@ -16,7 +16,9 @@ csl: ieee.csl
 **Author:** Nicolas Cloutier  
 **ORCID:** 0009-0008-5289-5324  
 **GitHub:** https://github.com/Grillcheese-AI/qzkp-academic/
+
 **Affiliation:** GrillCheese AI
+
 **Date:** May 24th, 2025 *(Revised: Feb 21st, 2026)*
 
 ## Abstract
