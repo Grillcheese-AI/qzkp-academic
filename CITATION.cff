@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+
+title: "QZKP: Secure Quantum Zero-Knowledge Proofs (Prototype)"
+abstract: >
+  Reference implementation (prototype) of a quantum zero-knowledge proof (QZKP)-style
+  system with a focus on transcript leakage prevention, soundness-by-repetition,
+  and reproducibility artifacts including optional IBM Quantum hardware evidence.
+
+authors:
+  - family-names: "Cloutier"
+    given-names: "Nicolas"
+    orcid: "https://orcid.org/0009-0008-5289-5324"
+
+keywords:
+  - "quantum cryptography"
+  - "zero-knowledge proofs"
+  - "post-quantum cryptography"
+  - "cryptographic commitments"
+  - "reproducibility"
+  - "IBM Quantum"
+
+license: "MIT"
+
+repository-code: "https://github.com/Grillcheese-AI/qzkp-academic"
+url: "https://github.com/Grillcheese-AI/qzkp-academic"
+
+preferred-citation:
+  type: article
+  title: "Secure Quantum Zero-Knowledge Proofs: Implementation, Analysis, and Optimization"
+  authors:
+    - family-names: "Cloutier"
+      given-names: "Nicolas"
+      orcid: "https://orcid.org/0009-0008-5289-5324"
+  year: 2026
+  month: 2
+  # If you have an arXiv ID or DOI later, add it here:
+  # doi: "10.XXXX/XXXX"
+  # url: "https://arxiv.org/abs/XXXX.XXXXX"
+  publisher: "GrillCheese AI"
+
+version: "0.1.0"
+date-released: "2026-02-21"
